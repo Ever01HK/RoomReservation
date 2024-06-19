@@ -1,26 +1,28 @@
 package me.web.guestRoom.controller;
 
-import java.io.IOException;
-
-import java.io.OutputStream;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import me.web.guestRoom.service.RoomCntVO;
 
+/*****************************************************************************************************
+Program : guestRoomController.java
+Description : A page for remaining guest room queries and reservations, controller
+Creator : Hyunkyung Oh
+Company : Vision IT co. Ltd.
+Date : APR 22
+
+**History**
+Date             the basis of work             Programmer
+APR 22				Created						Hyunkyung Oh              
+*****************************************************************************************************/
 
 @Controller
 public class guestRoomController {
@@ -50,8 +52,6 @@ public class guestRoomController {
     			month = Integer.parseInt(sShowMonth)+Integer.parseInt(sOperand);
     		}
     	}    	
-    		
-    	//int day = date.getDayOfMonth(); // return month(int)
     	
     	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
     	Date dateMonth = format.parse(year+"-"+month);
@@ -70,8 +70,6 @@ public class guestRoomController {
     	//Week day of the first day of month
     	int nFirstWeekDay = calendar.get(Calendar.DAY_OF_WEEK);
     	int nLastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-    	    	
-    	int day = date.getDayOfMonth(); 
     	
     	List<RoomCntVO> listRoomCnt = new ArrayList();
     	for( int i=0; i<nLastDay; i++ )
@@ -92,11 +90,6 @@ public class guestRoomController {
     	model.addAttribute("nFirstWeekDay", nFirstWeekDay);
     	model.addAttribute("nLastDay", nLastDay);
     	model.addAttribute("listRoomCnt", listRoomCnt);
-		return "/test";
-	} 
-    
-  
-   
-
-    
+		return "/calendar";
+	}     
 }

@@ -1,20 +1,16 @@
 package me.web.guestRoom.service;
 
-import java.io.Serializable;
+/*****************************************************************************************************
+Program : RoomCntVO.java
+Description : A VO class for calendar page
+Creator : Hyunkyung Oh
+Company : Vision IT co. Ltd.
+Date : APR 22
 
-/**********************************************************
-프로그램명 : TfVO.java
-설명 : 공통 상세코드 VO 클래스
-작성자 : 조정은
-소속 : (주)에이치씨
-일자 : 19.10.31
-프로그램설명
-관리자 상세코드관리 상세코드 데이터 처리 모델 클래스
-
-**프로그램이력**
-수정일          작업근거             유지보수담당
-'19.10.31       최초생성             조정은
-**********************************************************/
+**History**
+Date             the basis of work             Programmer
+APR 22				Created						Hyunkyung Oh            
+*****************************************************************************************************/
 
 public class RoomCntVO {
 	
@@ -47,9 +43,4 @@ public class RoomCntVO {
 		this.nSmallCnt = nSmallCnt;
 	}
 	
-	
-	
-	
-	
-    
 }

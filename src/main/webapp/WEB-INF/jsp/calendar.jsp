@@ -20,7 +20,7 @@
     }
 
     #calendarTable{
-        boarder: 2px solid #000;
+        border: 2px solid #000;
         width: 800px;
     }
    
@@ -55,8 +55,7 @@
 <script>
 function goCalendar(nOperand){
 	$("#hdnOperand").val(nOperand);
-	alert("<c:url value='/calendar'/>");
-    document.sForm.action = "<c:url value='/calendar'/>";
+	document.sForm.action = "<c:url value='/calendar'/>";
     document.sForm.submit();		
 }
 </script>
@@ -68,7 +67,7 @@ function goCalendar(nOperand){
                 <tr>
                     <td width="150" style="text-align:left;valign:middle;">
                         <a onClick="goCalendar(-1);" style="cursor:pointer;">
-                            <font size="2">◀ Previous Month</font>
+                            <font size="2"><img src="..\..\img\left1.png" style="width:11px; height:11px;"> Previous Month</font>
                         </a>
                     </td>
                     <td width="150" style="text-align:center;valign:middle;">
@@ -76,7 +75,7 @@ function goCalendar(nOperand){
                     </td>
                     <td width="150" style="text-align:right;valign:middle;">
                         <a onClick="goCalendar(1);" style="cursor:pointer;">
-                            <font size="2">Next Month ▶</font>
+                            <font size="2">Next Month <img src="..\..\img\right.png" style="width:11px; height:11px;"></font>
                         </a>
                     </td>
                 </tr>
@@ -110,12 +109,12 @@ function goCalendar(nOperand){
 	                                    <div style="color:Blue;">   <!-- Saturday -->
 	                                </c:if>
 	                                <c:if test="${j ne 1 || j ne 7}">
-	                                    <div style="text-aligh:left;padding=left:3px;margin-top:-5px;">   <!-- Week day -->
+	                                    <div style="text-align:left;padding-left:3px;margin-top:-5px;">   <!-- Week day -->
 	                                </c:if>
 	                                ${dayVal}
 	                                </div>
 	
-	                                <c:if test="${dayVal ne ''}">   <!-- 날짜가 있으면 숙소 갯수 확인해서 표시 처리 -->
+	                                <c:if test="${dayVal ne ''}">   <!--  -->
 	                                    <c:set var="charDay" value="${day}" />
 	                                    <c:if test="${day < 10}">
 	                                        <c:set var="charDay" value="0${day}" />
@@ -129,7 +128,7 @@ function goCalendar(nOperand){
 	                                                <c:if test="${j ne 1 && j ne 4 && j ne 5}"> <!--  Fri, Sat, Mon, Tue only available -->
 	                                                <c:if test="${listRoomCnt[datVal - 1].nBigCnt > 0}">
 	                                                    <div>   
-	                                                        <a onClick="goApply(${dayVal}, '1', '${sYearMonth}${charDay}', ${listRoomCnt[dayVal - 1].nBigCnt}}, ${j}, ${listRoomCnt1111111111})" style="cursor:pointer;">
+	                                                        <a onClick="goApply(${dayVal}, '1', '${sYearMonth}${charDay}', ${listRoomCnt[dayVal - 1].nBigCnt}, ${j}, ${listRoomCnt})" style="cursor:pointer;">
 	                                                            ${listRoomCnt[dayVal - 1].nBigCnt}:Big(<c:out value="${listRoomCnt[dayVal-1].nBigCnt}" />) </a>
 	                                                        <input type="hidden" id="hnBigCnt" value="<c:out value='${listRoomCnt[dayVal-1].nBigCnt}' />" />
 	                                                        <input type="hidden" id="hnBigCnt${dayVal}" value="<c:out value='${listRoomCnt[dayVal-1].nBigCnt}' />" />
@@ -168,10 +167,10 @@ function goCalendar(nOperand){
                 </c:forEach>
             </table>
      </div>
-     <form id="sForm" name="sForm" method="post" action="<c:url value="/calendar" />" >
+     <form id="sForm" name="sForm" method="post" action="<c:url value='/calendar' />" >
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="hidden" id="hdnCurrYear" name="pCurrYear" value="<c:out value="${sYear}"/>">
-				<input type="hidden" id="hdnCurrMonth" name="pCurrMonth" value="<c:out value="${sMonth}"/>">
+				<input type="hidden" id="hdnCurrYear" name="pCurrYear" value="<c:out value='${sYear}'/>">
+				<input type="hidden" id="hdnCurrMonth" name="pCurrMonth" value="<c:out value='${sMonth}'/>">
 				<input type="hidden" id="hdnOperand" name="pOperand" value="0">
 	 </form>
 </body>
